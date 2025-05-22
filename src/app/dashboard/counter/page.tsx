@@ -1,4 +1,4 @@
-import { CartCounter } from '@/app/components/shopping-cart'
+import { CartCounter } from '@/src/shopping-cart'
 import { Metadata } from 'next'
 import React from 'react'
 

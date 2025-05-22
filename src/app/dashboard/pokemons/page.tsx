@@ -1,4 +1,4 @@
-import { PokemonGrid, PokemonsResponse, SimplePokemon } from "@/app/pokemons";
+import { PokemonGrid, PokemonsResponse, SimplePokemon } from "@/src/pokemons";
 
 
 
@@ -12,7 +12,7 @@ const GetPokemons = async (limit = 20, offset = 0): Promise<SimplePokemon[]> => 
     name: pokemon.name,
   }))
 
-  throw new Error('Error al cargar los pokemons');
+  // throw new Error('Error al cargar los pokemons');
 
   return pokemons;
 }
