@@ -2,6 +2,13 @@ import { PokemonGrid, PokemonsResponse, SimplePokemon } from "@/src/pokemons";
 
 
 
+export const metadata = {
+  title: 'Listado de Pokémons',
+  description: 'Listado de pokémons estático',
+}
+
+
+
 
 const GetPokemons = async (limit = 20, offset = 0): Promise<SimplePokemon[]> => {
   const data: PokemonsResponse = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`)
