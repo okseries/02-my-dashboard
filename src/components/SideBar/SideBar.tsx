@@ -1,26 +1,33 @@
 import Image from 'next/image'
 import React from 'react'
-import { IoLogoReact, IoAnalytics, IoFootball } from 'react-icons/io5'
-import SidebarMenuItem from './SidebarMenuItem'
+import { IoLogoReact, IoAnalytics, IoFootball, IoHeartHalfOutline, IoHeartOutline } from 'react-icons/io5'
+import { SidebarMenuItem } from './SidebarMenuItem'
 
 const menuItems = [
   {
     path: '/dashboard/main',
-    icon: <IoLogoReact size={22} />,
+    icon: <IoLogoReact size={40} />,
     title: 'Dashboard',
     subTitle: 'Visualize your data',
   },
   {
     path: '/dashboard/counter',
-    icon: <IoAnalytics size={22} />,
+    icon: <IoAnalytics size={40} />,
     title: 'Counter',
     subTitle: 'Contador Client Side',
   },
   {
     path: '/dashboard/pokemons',
-    icon: <IoFootball size={22} />,
+    icon: <IoFootball size={40} />,
     title: 'Pokemons',
     subTitle: 'Generación Estática',
+  },
+
+  {
+    path: '/dashboard/favorites',
+    icon: <IoHeartOutline size={40}  />,
+    title: 'Favoritos',
+    subTitle: 'Pokémons Favoritos',
   },
 ]
 

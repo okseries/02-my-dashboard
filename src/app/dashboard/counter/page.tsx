@@ -8,8 +8,9 @@ export const metadata: Metadata = {
   description: 'Shopping Cart',
 }
 
-const CounterPage = () => {
 
+
+const CounterPage = () => {
   
 
   return (
