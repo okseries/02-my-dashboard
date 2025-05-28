@@ -20,4 +20,7 @@ const PokemonsPage = async () => {
   )
 }
 
-export default PokemonsPage
+export default PokemonsPage;
+
+
+

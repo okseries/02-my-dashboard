@@ -6,10 +6,10 @@ interface PokemonState {
 }
 
 const initialState: PokemonState = {
-  "1": {
-    id: "1",
-    name: "Bulbasaur",
-  },
+  // "1": {
+  //   id: "1",
+  //   name: "Bulbasaur",
+  // },
 };
 
 const PokemonsSlice = createSlice({
@@ -23,11 +23,13 @@ const PokemonsSlice = createSlice({
       if (!!state[id]) { // es lo mimso que state[id] !== undefined
         // If the pokemon is already in the state, remove it
         delete state[id];
-        return;
+        // return;
       } else {
         // If the pokemon is not in the state, add it
         state[id] = pokemon;
       }
+      // TODO borrar 
+      localStorage.setItem("favorite-pokemons", JSON.stringify(state));
     }
   },
 });
