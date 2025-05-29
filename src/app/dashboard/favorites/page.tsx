@@ -1,4 +1,4 @@
-import { FavoritePokemons, PokemonGrid, PokemonsResponse, SimplePokemon } from "@/src/pokemons";
+import { FavoritePokemons } from "@/src/pokemons";
 
 
 

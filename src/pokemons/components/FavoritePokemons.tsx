@@ -6,7 +6,10 @@ import { IoHeartOutline } from 'react-icons/io5';
 
 export const FavoritePokemons = () => {
     const favoritePokemons = useAppSelector((state) => Object.values(state.pokemons));
-    const [pokemons, setPokemons] = useState(favoritePokemons)
+
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const [pokemons, setPokemons] = useState(favoritePokemons);
+
 
 
     return (

@@ -1,11 +1,11 @@
 "use client"
 import { useAppDispatch, useAppSelector } from '@/src/store'
-import { addOne, initCounterState, resetCount, subStractOne } from '@/src/store/counter/counterSlice'
+import { addOne, initCounterState,  subStractOne } from '@/src/store/counter/counterSlice'
 import { useEffect } from 'react'
 
-interface Props {
-    value?: number
-}
+// interface Props {
+//     value?: number
+// }
 
 
 interface CounterResponse {
@@ -24,7 +24,7 @@ const getApiCounter = async (): Promise<CounterResponse> => {
   return data;
 }
 
-export const CartCounter = ({value = 0}: Props) => {
+export const CartCounter = () => {
     const count = useAppSelector(state => state.counter.count);
     const dispatch = useAppDispatch();
 
