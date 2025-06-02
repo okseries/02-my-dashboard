@@ -1,48 +1,65 @@
-"use client";
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { SimplePokemon } from "@/src/pokemons";
 
-interface PokemonState {
-  [key: string]: SimplePokemon;
+import { SimplePokemon } from '@/src/pokemons';
+import { PayloadAction, createSlice } from '@reduxjs/toolkit';
+
+/*
+  {
+    favorites: {
+      '1': { id: 1, name: 'bulbasaur' },
+      '2': { id: 2, name: 'bulbasaur' },
+    }
+  }
+*/
+
+interface PokemonsState { 
+  favorites: { [key: string]: SimplePokemon },
 }
 
-const getInitialState = (): PokemonState => {
-  const favorites = JSON.parse(
-    localStorage.getItem("favorite-pokemons") ?? "{}"
-  );
-  return favorites;
-};
+// const getInitialState = (): PokemonsState => {
+  
+//   // if ( typeof localStorage === 'undefined' ) return {};
+//   const favorites = JSON.parse( localStorage.getItem('favorite-pokemons') ?? '{}'  );
+//   return favorites;
+// }
 
-const initialState: PokemonState = {
-  ...getInitialState(),
-  // "1": {
-  //   id: "1",
-  //   name: "Bulbasaur",
-  // },
-};
 
-const PokemonsSlice = createSlice({
-  name: "PokemonState",
+const initialState: PokemonsState = {
+  favorites: {},
+  // ...getInitialState(),
+  // '1': { id: '1', name: 'bulbasaur' },
+  // '3': { id: '3', name: 'venusaur' },
+  // '5': { id: '5', name: 'Charmeleon' },
+}
+
+const pokemonsSlice = createSlice({
+  name: 'pokemons',
   initialState,
   reducers: {
-    toogleFavorite: (state, action: PayloadAction<SimplePokemon>) => {
+
+    setFavoritePokemons( state, action: PayloadAction<{ [key: string]: SimplePokemon }> ) {
+      state.favorites = action.payload;
+    },
+
+    toggleFavorite( state, action: PayloadAction<SimplePokemon> ) {
+
       const pokemon = action.payload;
       const { id } = pokemon;
-      if (!!state[id]) {
-        // es lo mimso que state[id] !== undefined
-        // If the pokemon is already in the state, remove it
-        delete state[id];
+
+      if ( !!state.favorites[id] ) {
+        delete state.favorites[id];
         // return;
       } else {
-        // If the pokemon is not in the state, add it
-        state[id] = pokemon;
+        state.favorites[id] = pokemon;
       }
-      // TODO: Esta parte no se deberia hacer aqui ya que es una mala practica, lo hago para probar
-      localStorage.setItem("favorite-pokemons", JSON.stringify(state));
-    },
-  },
+
+      //TODO: No se debe de hacer en Redux
+      // localStorage.setItem('favorite-pokemons', JSON.stringify( state.favorites ) );
+
+    }
+
+  }
 });
 
-export const { toogleFavorite } = PokemonsSlice.actions;
+export const { toggleFavorite, setFavoritePokemons } = pokemonsSlice.actions;
 
-export default PokemonsSlice.reducer;
+export default pokemonsSlice.reducer;

@@ -1,37 +1,41 @@
-"use client"
-import React, { useState } from 'react'
-import { PokemonGrid } from './pokemonGrid'
-import { useAppSelector } from '@/src/store';
-import { IoHeartOutline } from 'react-icons/io5';
+'use client';
+
+import { useAppSelector } from "@/src/store";
+import { useEffect, useState } from "react";
+import { IoHeartOutline } from "react-icons/io5";
+import { PokemonGrid } from "./pokemonGrid";
+
 
 export const FavoritePokemons = () => {
-    const favoritePokemons = useAppSelector((state) => Object.values(state.pokemons));
 
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    const [pokemons, setPokemons] = useState(favoritePokemons);
+  const favoritePokemons = useAppSelector( state => Object.values( state.pokemons.favorites ) );
+  // const [pokemons, setPokemons ] = useState( favoritePokemons );
 
+  // useEffect(() => {
+  //   // console.log({ favoritePokemons });
+  //   // setPokemons( favoritePokemons );
+  // }, [favoritePokemons])
+  
 
-
-    return (
-        <>
-            {
-                pokemons.length === 0
-                    ? (<Nofavorites />)
-                    : (<PokemonGrid pokemons={pokemons ?? []} />)
-
-            }
-            
-        </>
-    )
+  return (
+    <>
+        {/* <PokemonGrid pokemons={ favoritePokemons } /> */}
+        {
+          favoritePokemons.length === 0
+            ? (<NoFavorites />)
+            : (<PokemonGrid pokemons={ favoritePokemons } />)
+        }    
+    </>
+  )
 }
 
 
-export const Nofavorites = () => {
-    return (
-        <div className="flex flex-col h-[50vh] items-center justify-center">
-            <IoHeartOutline size={100} className="text-red-500" />
-            <span className="text-2xl text-gray-500">No tienes pokémons favoritos</span>
-        </div>
-    )
-}
 
+export const NoFavorites = () => {
+  return (
+    <div className="flex flex-col h-[50vh] items-center justify-center ">
+      <IoHeartOutline size={100} className="text-red-500" />
+      <span>No hay favoritos</span>
+    </div>
+  )
+}
